@@ -177,8 +177,9 @@
         <div class="form-elements">
           <div class="col-md-8 mb-3">
             <label for="name" class="form-label text-dark">Tavs vārds</label>
-            <input id="name" type="text" pattern="^(\w)+\s?(\w)+\s?(\w)+$" name="name" class="form-control"
-              placeholder="Jānis Zariņš" required />
+            <input id="name" type="text"
+              pattern="^[a-zA-ZĒŪĪĀŠĢĶĻŽČŅšģķļčņžūīāē]+\s?[a-zA-ZĒŪĪĀŠĢĶĻŽČŅšģķļčņžūīāē]*\s?[a-zA-ZĒŪĪĀŠĢĶĻŽČŅšģķļčņžūīāē]*$"
+              name="name" class="form-control" placeholder="Jānis Zariņš" required />
           </div>
 
           <div class="col-md-8 mb-3">
@@ -189,7 +190,8 @@
 
           <div class="col-md-8 mb-3">
             <label for="email" class="form-label text-dark">E-pasta adrese</label>
-            <input id="email" name="email" type="email" class="form-control" placeholder="name@example.com" required />
+            <input id="email" name="email" type="email" pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+              class="form-control" placeholder="name@example.com" required />
           </div>
 
           <div class="col-md-8 mb-3">
