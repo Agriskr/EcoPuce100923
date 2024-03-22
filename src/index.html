@@ -29,7 +29,7 @@
           <div class="card box-shadow align-items-center my-3">
             <img src="@img/caliper.png" class="card-icon my-3" alt="caliper" />
             <div class="card-body">
-              <h5 class="card-title">Design</h5>
+              <h5 class="card-title">Dizains</h5>
               <br />
               <h6>Mēbeļu izgatavošana pēc individuāla projekta</h6>
               <br />
@@ -47,12 +47,16 @@
           <div class="card align-items-center my-3">
             <img src="@img/zimulis-lineals-2.png" class="card-icon my-3" alt="pencil-and-ruler-crossed" />
             <div class="card-body">
-              <h5 class="card-title">Branding</h5>
+              <h5 class="card-title">Materiāli</h5>
               <br />
               <h6>Mēbeļu un citu koka izstrādājumu restaurācija</h6>
               <br />
               <p class="card-text">
                 Veicam senu un ne tik senu mēbeļu atjaunošanas darbus.
+              </p>
+              <p class="card-text">
+                Izmantojam gan masīvkoku, gan dažādus līmētos
+                materiālus.
               </p>
             </div>
           </div>
@@ -61,7 +65,7 @@
           <div class="card align-items-center my-3">
             <img src="@img/circular-saw.png" class="card-icon my-3" alt="circularsaw" />
             <div class="card-body">
-              <h5 class="card-title">Promises</h5>
+              <h5 class="card-title">Tehnoloģijas</h5>
               <br />
               <h6>Izmantojam moderno tehnoloģiju sniegtās iespējas</h6>
               <br />
@@ -69,8 +73,7 @@
                 Jaunākās tendences furnitūras elementos.
               </p>
               <p class="card-text">
-                Strādājam gan ar masīvkoku, gan ar dažādiem līmētiem
-                materiāliem.
+                Strādājam ar progresīviem darbagaldiem un augstas precizitātes instrumentiem.
               </p>
             </div>
           </div>
@@ -160,25 +163,28 @@
       <h3 class="text-white">Saziņai</h3>
     </section>
 
-    <div class="container my-2 py-5" id="contacts">
+    <div class="container my-2 py-3" id="contacts">
       <h5 class="text-dark text-center py-5">
         Pastāsti mums, ko Tu vēlies uzbūvēt un mēs centīsimies piepildīt tavus
         sapņus
       </h5>
-      <form class="gform row row-cols-1 justify-content-center" method="POST" data-email="agriskrum@gmail.com"
-        action="https://script.google.com/macros/s/AKfycbxyVVEW_XRJU1yUtnArLfu2Its6pW6YOxSdPHRNYLctYL0IkM6yp1hfvNvIXtqeCSs/exec">
-        <!-- change the form action to your script url -->
-
+      <!-- web3form -->
+      <form class="form" id="form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="d2acb4d1-a16b-4547-bb5d-108d62cd980b">
+        <input type="hidden" name="subject" value="New Submission from Web3Forms">
+        <input type="checkbox" name="botcheck" id="" style="display: none;">
+        <!-- web3form -->
         <div class="form-elements">
           <div class="col-md-8 mb-3">
             <label for="name" class="form-label text-dark">Tavs vārds</label>
-            <input id="name" type="text" name="name" class="form-control" placeholder="Jānis Zariņš" required />
+            <input id="name" type="text" pattern="^(\w)+\s?(\w)+\s?(\w)+$" name="name" class="form-control"
+              placeholder="Jānis Zariņš" required />
           </div>
 
           <div class="col-md-8 mb-3">
-            <label for="phonenumber" class="form-label text-dark">Telefona numurs</label>
-            <input id="phonenumber" name="phonenumber" type="text" class="form-control" placeholder="+371 55566677"
-              required />
+            <label for="phoneNumber" class="form-label text-dark">Telefona numurs</label>
+            <input id="phoneNumber" pattern="^((\+\d{3}|\(\+\d{3}\))[\s\-])?\d{3}[\s\-]?\d{3}[\s\-]?\d{2}$"
+              name="phoneNumber" type="text" class="form-control" placeholder="+371 55566677" required />
           </div>
 
           <div class="col-md-8 mb-3">
@@ -191,16 +197,12 @@
             <textarea class="form-control" name="message" id="message" rows="3" required></textarea>
           </div>
 
-          <!-- <div class="col-md-8 mb-3">
-          <label for="color" class="form-label text-dark">Favourite Color: </label>
-          <input id="color" class="form-control" name="color" placeholder="green" />
-        </div> -->
-
           <fieldset class="pure-group honeypot-field">
             <label for="honeypot">To help avoid spam, utilize a Honeypot technique with a hidden
               text field; must be empty to submit the form! Otherwise, we
               assume the user is a spam bot.</label>
-            <input id="honeypot" type="text" name="honeypot" value="" />
+            <!-- <input id="honeypot" type="text" name="honeypot" value="" /> -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
           </fieldset>
 
           <div class="d-grid d-md-flex justify-content-md-end mb-3">
@@ -209,18 +211,35 @@
             </button>
           </div>
         </div>
-        <!-- Customise the Thankyou Message People See when they submit the form: -->
-        <div class="thankyou_message text-dark" style="display: none">
-          <h3>
-            Paldies ka sazinājāties ar mums! Atbildēsim jums visdrīzākajā
-            laikā!
-          </h3>
-        </div>
+
+        <p class="text-base text-center text-dark" id="result"></p>
+
       </form>
     </div>
 
-    <div class="container py-5">
+    <div class="container pb-5">
       <h3 class="text-dark text-center pt-3">Kā mūs atrast</h3>
+      <div class="social">
+
+        <a class="facebook icon-facebook" href="https://www.facebook.com/Eco_p%C5%ABce-104584657672303/"
+          target="_blank">
+          <img src="../img/facebook.svg" class="icon svg-facebook-dims" alt="facebook-48">
+        </a>
+
+        <a class="instagram icon-instagram" href="https://www.instagram.com/eco.puce/?hl=en" target="_blank">
+          <img src="../img/instagram.svg" class="icon svg-instagram-dims" alt="instagram-48">
+        </a>
+      </div>
+
+
+
+      <div class="google-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32663.623946901847!2d22.85547640081886!3d57.17348438587611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46ee4f8c0aaafe51%3A0x400cfcd68f31b60!2sBalgale%2C%20Balgales%20pagasts%2C%20Talsu%20novads%2C%20LV-3287!5e0!3m2!1slv!2slv!4v1710610600790!5m2!1slv!2slv"
+          width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
     </div>
     @@include('html/footer.html', { })
   </body>

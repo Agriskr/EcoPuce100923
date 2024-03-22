@@ -1,6 +1,6 @@
 $primary: #6610f2;
 $secondary: #f4f5f7;
-$dark: #616778;
+$dark: #575c69;
 $info: #979797;
 $blue: #0d6efd;
 $white: #ffffff;
@@ -182,12 +182,53 @@ p {
   font-weight: 300;
 }
 
+input::placeholder {
+  font-size: 0.8rem;
+}
 .container {
   width: 90%;
   color: $white;
 
   @include media-breakpoint-up(md) {
     width: 70%;
+  }
+}
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.svg-facebook-dims {
+  width: 48px;
+  height: 48px;
+}
+
+.svg-instagram-dims {
+  width: 48px;
+  height: 48px;
+}
+
+.svg-puce-transparent-dims {
+  width: 96px;
+  height: 96px;
+}
+
+.svg-whatsapp-dims {
+  width: 116.499px;
+  height: 116.497px;
+}
+
+.icon {
+  display: inline-block;
+  transition: 0.5s ease;
+  &:hover {
+    opacity: 0.9;
+
+    transform: scale(1.1);
   }
 }
 
@@ -473,7 +514,7 @@ p {
 }
 
 .contactButton {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   border: 2px $indigo-500 solid;
   transition: 0.5s ease;
 
@@ -519,4 +560,22 @@ p {
 }
 .honeypot-field {
   display: none;
+}
+.google-map {
+  padding-bottom: 50%;
+  position: relative;
+}
+
+.google-map iframe {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+#result {
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-top: 2rem;
 }
