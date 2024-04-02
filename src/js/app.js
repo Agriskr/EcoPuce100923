@@ -1,7 +1,7 @@
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../../node_modules/spotlight.js/dist/spotlight.bundle.js';
 import * as flsFunctions from "./modules/functions.js";
-import './modules/form-submission-handler.js';
+
 
 
 
@@ -23,32 +23,29 @@ function scrollFunction() {
 
     }
 }
-//in offcanvas add spaces between nav items
-document.getElementById("navbar-toggler").addEventListener("click", function () {
-    if (window.matchMedia("(orientation: portrait)").matches) {
-        document.querySelectorAll('.nav-item').forEach(_item => {
-            _item.classList.add('offcanvas-nav-item-class')
-        })
-        document.getElementById("offcanvas-close").addEventListener("click", function () {
-            document.querySelectorAll('.nav-item').forEach(_item => {
-                _item.classList.remove('offcanvas-nav-item-class')
-            })
-        })
-    } else {
-        document.querySelectorAll('.nav-item').forEach(_item => {
-            _item.classList.add('offcanvas-nav-item-class-landscape')
-        })
-        document.getElementById("offcanvas-close").addEventListener("click", function () {
-            document.querySelectorAll('.nav-item').forEach(_item => {
-                _item.classList.remove('offcanvas-nav-item-class-landscape')
-            })
-        })
-    }
+
+
+const navLinks = document.querySelectorAll(".nav-item")
+const togglerButton = document.querySelector('.navbar-toggler')
+const menu = document.getElementById('navbarNav')
+
+navLinks.forEach((l) => {
+    l.addEventListener('click', () => {
+        menu.classList.remove('show');
+        togglerButton.classList.add('collapsed');
+        document.body.classList.remove('no-scroll')
+    })
 })
 
+togglerButton.addEventListener('click', () => {
+    if (menu.classList.contains('show') || menu.classList.contains('collapsing')) {
+        document.body.classList.toggle('no-scroll')
 
+    }
 
+})
 
+///form sender ////
 const form = document.getElementById('form');
 const result = document.getElementById('result');
 
